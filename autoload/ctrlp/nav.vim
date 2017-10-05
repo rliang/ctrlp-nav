@@ -20,9 +20,11 @@ endf
 let s:wpm = 0
 
 fu! ctrlp#nav#init()
+  exe "nn <buffer> ".get(g:, 'ctrlp#nav#map_up', '<c-u>')." :call ctrlp#nav#accept('', '..')<cr>"
   let s:wpm = get(g:, 'ctrlp_working_path_mode', 0)
   let g:ctrlp_working_path_mode = 0
-  retu filter(glob('{,.}*', 1, 1, 1), "v:val != './'")
+  setl wig+=./,../
+  retu glob('{,.}*', 0, 1, 1)
 endf
 
 fu! ctrlp#nav#accept(mode, path)
