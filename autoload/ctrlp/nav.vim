@@ -27,7 +27,7 @@ fu! ctrlp#nav#accept(mode, path)
   if isdirectory(a:path)
     sil! exe get(g:, 'ctrlp#nav#cd', 'cd') a:path
     cal ctrlp#exit()
-    cal ctrlp#init(ctrlp#nav#id())
+    cal ctrlp#init(ctrlp#nav#id(),{'mode':''})
   el
     cal ctrlp#acceptfile(a:mode, a:path)
   en
